@@ -5,16 +5,30 @@ VisualStudioVersion = 16.0.31025.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyHardwareMonitor", "MyHardwareMonitor\MyHardwareMonitor.csproj", "{40CF37E8-2AE1-4953-8923-1F3301658326}"
 EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "MyHardwareMonitorInstallator", "MyHardwareMonitorInstallator\MyHardwareMonitorInstallator.wixproj", "{CB7B32CF-65E8-4896-B71D-7025E491A70B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{40CF37E8-2AE1-4953-8923-1F3301658326}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{40CF37E8-2AE1-4953-8923-1F3301658326}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40CF37E8-2AE1-4953-8923-1F3301658326}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{40CF37E8-2AE1-4953-8923-1F3301658326}.Debug|x86.Build.0 = Debug|Any CPU
 		{40CF37E8-2AE1-4953-8923-1F3301658326}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40CF37E8-2AE1-4953-8923-1F3301658326}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40CF37E8-2AE1-4953-8923-1F3301658326}.Release|x86.ActiveCfg = Release|Any CPU
+		{40CF37E8-2AE1-4953-8923-1F3301658326}.Release|x86.Build.0 = Release|Any CPU
+		{CB7B32CF-65E8-4896-B71D-7025E491A70B}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{CB7B32CF-65E8-4896-B71D-7025E491A70B}.Debug|x86.ActiveCfg = Debug|x86
+		{CB7B32CF-65E8-4896-B71D-7025E491A70B}.Debug|x86.Build.0 = Debug|x86
+		{CB7B32CF-65E8-4896-B71D-7025E491A70B}.Release|Any CPU.ActiveCfg = Release|x86
+		{CB7B32CF-65E8-4896-B71D-7025E491A70B}.Release|x86.ActiveCfg = Release|x86
+		{CB7B32CF-65E8-4896-B71D-7025E491A70B}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

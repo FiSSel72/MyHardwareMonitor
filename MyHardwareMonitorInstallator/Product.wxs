@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"><?define MyHardwareMonitor_TargetDir=$(var.MyHardwareMonitor.TargetDir)?>
+	<Product Id="*" Name="MyHardwareMonitor" Language="1033" Version="1.0.0.0" Manufacturer="FiSSel" UpgradeCode="332b32ec-2365-4e70-840d-af8ae19db7df">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+		<UIRef Id="WixUI_Minimal" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate EmbedCab="yes"/>
+
+		<Feature Id="ProductFeature" Title="MyHardwareMonitor" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+			<ComponentRef Id="ApplicationShortcut" />
+			<ComponentRef Id="ApplicationShortcutDesktop" />
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="MyHardwareMonitor" />
+			</Directory>
+			<Directory Id="ProgramMenuFolder">
+				<Directory Id="ApplicationProgramsFolder" Name="MyHardwareMonitor"/>
+			</Directory>
+			<Directory Id="DesktopFolder" Name="Desktop"/>
+		</Directory>
+	</Fragment>
+	<Fragment>
+		<DirectoryRef Id="ApplicationProgramsFolder">
+			<Component Id="ApplicationShortcut" Guid="8ae5f2cb-f678-4109-a9fc-8964a3b5abe1">
+				<Shortcut Id="ApplicationStartMenuShortcut" Name="MyHardwareMonitor" Description="MyHardwareMonitor" Target="[INSTALLFOLDER]MyHardwareMonitor.exe" WorkingDirectory="INSTALLFOLDER" />
+				<RemoveFolder Id="RemoveApplicationProgramsFolder" Directory="ApplicationProgramsFolder" On="uninstall" />
+				<RegistryValue Root="HKCU" Key="Software\MyHardwareMonitor" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+			</Component>
+		</DirectoryRef>
+		<DirectoryRef Id="DesktopFolder">
+			<Component Id="ApplicationShortcutDesktop" Guid="79df1487-e21a-472e-b4d1-8ed52838ede4">
+				<Shortcut Id="ApplicationDesktopShortcut" Name="MyHardwareMonitor" Description="MyHardwareMonitor" Target="[INSTALLFOLDER]MyHardwareMonitor.exe" WorkingDirectory="INSTALLFOLDER" />
+				<RemoveFolder Id="RemoveDesktopFolder" Directory="DesktopFolder" On="uninstall" />
+				<RegistryValue Root="HKCU" Key="Software\MyHardwareMonitor" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+			</Component>
+		</DirectoryRef>
+	</Fragment>
+	
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
+			<Component Id="MyHardwareMonitor.exe" Guid="cd79a1c6-68e0-492b-9978-23d3336a979a">
+			  <File Id="MyHardwareMonitor.exe" Name="MyHardwareMonitor.exe" Source="$(var.MyHardwareMonitor_TargetDir)MyHardwareMonitor.exe" />
+			</Component>
+			<Component Id="MyHardwareMonitor.exe.config" Guid="720a821f-6c53-4429-b645-0b3b37a79583">
+			  <File Id="MyHardwareMonitor.exe.config" Name="MyHardwareMonitor.exe.config" Source="$(var.MyHardwareMonitor_TargetDir)MyHardwareMonitor.exe.config" />
+			</Component>
+			<Component Id="Syncfusion.SfGauge.WPF.dll" Guid="f83dd39e-a679-4a35-b8c4-f390691d81e9">
+			  <File Id="Syncfusion.SfGauge.WPF.dll" Name="Syncfusion.SfGauge.WPF.dll" Source="$(var.MyHardwareMonitor_TargetDir)Syncfusion.SfGauge.WPF.dll" />
+			</Component>
+			<Component Id="MahApps.Metro.IconPacks.Material.dll" Guid="79de03b3-5b02-4da8-aed6-be2e93ababc6">
+			  <File Id="MahApps.Metro.IconPacks.Material.dll" Name="MahApps.Metro.IconPacks.Material.dll" Source="$(var.MyHardwareMonitor_TargetDir)MahApps.Metro.IconPacks.Material.dll" />
+			</Component>
+			<Component Id="Syncfusion.SfProgressBar.WPF.dll" Guid="64cb43bd-19d0-496a-a978-f960d549e2c6">
+			  <File Id="Syncfusion.SfProgressBar.WPF.dll" Name="Syncfusion.SfProgressBar.WPF.dll" Source="$(var.MyHardwareMonitor_TargetDir)Syncfusion.SfProgressBar.WPF.dll" />
+			</Component>
+			<Component Id="Syncfusion.Shared.WPF.dll" Guid="129492c2-ebd4-421c-adb0-d191d733e57c">
+			  <File Id="Syncfusion.Shared.WPF.dll" Name="Syncfusion.Shared.WPF.dll" Source="$(var.MyHardwareMonitor_TargetDir)Syncfusion.Shared.WPF.dll" />
+			</Component>
+			<Component Id="OpenHardwareMonitorLib.dll" Guid="f54782f2-d930-4683-8a42-b5e1f0b43122">
+			  <File Id="OpenHardwareMonitorLib.dll" Name="OpenHardwareMonitorLib.dll" Source="$(var.MyHardwareMonitor_TargetDir)OpenHardwareMonitorLib.dll" />
+			</Component>
+			<Component Id="Syncfusion.Licensing.dll" Guid="82b3f12f-fbaf-4767-9626-4104c74c1bdb">
+			  <File Id="Syncfusion.Licensing.dll" Name="Syncfusion.Licensing.dll" Source="$(var.MyHardwareMonitor_TargetDir)Syncfusion.Licensing.dll" />
+			</Component>
+			<Component Id="MahApps.Metro.IconPacks.Core.dll" Guid="582ea0eb-facb-403b-931f-4be2d05ff355">
+			  <File Id="MahApps.Metro.IconPacks.Core.dll" Name="MahApps.Metro.IconPacks.Core.dll" Source="$(var.MyHardwareMonitor_TargetDir)MahApps.Metro.IconPacks.Core.dll" />
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+</Wix>
